@@ -150,7 +150,7 @@ function handleSuccessfulUnlock() {
 
     // Redirect langsung ke situs setelah 1.5 detik
     setTimeout(() => {
-        window.location.href = 'https://pusatkoin.netlify.app';
+        window.location.href = 'https://web.topbos.com/';
     }, 1500);
 }
 
