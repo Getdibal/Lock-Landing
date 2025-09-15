@@ -2,57 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cipher Quest: Codebreaker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cipher Quest: Secure Access</title>
   <link rel="stylesheet" href="./style.css">
   <style>
-    /* Styling tambahan untuk efek lainnya */
-    .digit-feedback {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-      height: 20px;
+    .landing-page {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3,10,23,0.98), rgba(6,12,30,0.98));
+      display: none;
+      z-index: 50;
+      padding: 20px;
+      overflow-y: auto;
+      color: var(--primary-color);
     }
-
-    .feedback-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
+    .landing-inner {
+      max-width: 100%;
+      margin: 20px auto;
+      background: rgba(10,12,18,0.85);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.04);
     }
-
-    .feedback-dot.correct {
-      background: #0f0;
-      box-shadow: 0 0 5px #0f0;
+    .landing-header {
+      display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;
     }
-
-    .feedback-dot.wrong-position {
-      background: #ff0;
-      box-shadow: 0 0 5px #ff0;
-    }
-
-    .feedback-dot.wrong {
-      background: #f55;
-      box-shadow: 0 0 5px #f55;
-    }
+    .landing-title { font-size:1.6rem; font-weight:800; font-family:var(--font-main); }
+    .landing-cta { padding:10px 16px; border-radius:10px; background:linear-gradient(90deg,#00ffd5,#1ef3ff); color:#001; font-weight:700; border:none; cursor:pointer; }
+    .landing-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top:16px; }
+    .card { padding:16px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-size:0.9rem; }
+    .card h3 { margin-bottom:10px; font-size:1.1rem; }
+    .menu-links { list-style:none; padding:0; margin:0; }
+    .menu-links li { margin-bottom:6px; }
+    .menu-links a { color:var(--primary-color); text-decoration:none; transition:0.2s; }
+    .menu-links a:hover { color:#00ffd5; }
+    .close-landing { background:none;border:1px solid rgba(255,255,255,0.06); padding:6px 10px;border-radius:8px;color:var(--primary-color); cursor:pointer; }
   </style>
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Access Terminal</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1 class="glitch-title">ERROR: ACCESS DENIED</h1>
         </header>
-
         <main>
             <section class="keypad-section">
                 <div class="keypad-container">
@@ -80,7 +72,6 @@
                     </div>
                 </div>
             </section>
-
             <section class="log-section">
                 <div class="log-container">
                     <div class="log-header">
@@ -100,16 +91,77 @@
                 </div>
             </section>
         </main>
-
         <div class="overlay"></div>
         <div class="scanlines"></div>
         <div class="glow"></div>
+        <div class="landing-page" id="landing-page" aria-hidden="true">
+          <div class="landing-inner">
+            <div class="landing-header">
+              <div>
+                <div class="landing-title">Selamat! Akses Terbuka</div>
+                <div style="font-family:var(--font-mono);opacity:0.8;margin-top:6px">Anda berhasil melewati sistem keamanan.</div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                <button class="landing-cta" id="go-to-site">Kunjungi Situs Utama</button>
+                <button class="close-landing" id="close-landing">Tutup</button>
+              </div>
+            </div>
+            <div class="landing-grid">
+              <div class="card">
+                <h3>Menu Utama</h3>
+                <ul class="menu-links">
+                  <li><a href="https://example.com/dashboard" target="_blank">Dashboard</a></li>
+                  <li><a href="https://example.com/profile" target="_blank">Profil Pengguna</a></li>
+                  <li><a href="https://example.com/settings" target="_blank">Pengaturan</a></li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Kategori Produk</h3>
+                <ul class="menu-links">
+                  <li><a href="https://example.com/products/tech" target="_blank">Teknologi</a></li>
+                  <li><a href="https://example.com/products/fashion" target="_blank">Fashion</a></li>
+                  <li><a href="https://example.com/products/food" target="_blank">Makanan</a></li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Fitur Lain</h3>
+                <ul class="menu-links">
+                  <li><a href="https://example.com/help" target="_blank">Bantuan</a></li>
+                  <li><a href="https://example.com/support" target="_blank">Dukungan</a></li>
+                  <li><a href="https://example.com/about" target="_blank">Tentang Kami</a></li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Kontak</h3>
+                <p>Email: admin@example.com<br/>Tel: +62 812 3456 7890</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
+    <script>
+    (function(){
+      const PIN_LENGTH=4,MAX_ATTEMPTS=5,CORRECT_PIN="0702";
+      const pinDots=document.querySelectorAll('.pin-dot'),keys=document.querySelectorAll('.key'),attemptsCounter=document.querySelector('.attempts-number'),logContent=document.getElementById('log-content'),container=document.querySelector('.container'),landingPage=document.getElementById('landing-page'),goToSiteBtn=document.getElementById('go-to-site'),closeLandingBtn=document.getElementById('close-landing');
+      let currentPin='',attemptsRemaining=MAX_ATTEMPTS,isLocked=false;
 
-    <script src="script.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+      function init(){addEventListeners();}
+      function addEventListeners(){
+        keys.forEach(key=>{key.addEventListener('click',()=>handleKeyPress(key));key.addEventListener('mouseenter',()=>playSound('hover'));});
+        document.addEventListener('keydown',e=>{if(!isLocked&&/Digit|Numpad/.test(e.code)){if(/\d/.test(e.key))addDigit(e.key);}if(!isLocked&&e.key==='Backspace')deleteLastDigit();if(!isLocked&&e.key==='Enter')attemptUnlock();});
+        goToSiteBtn.addEventListener('click',()=>{window.open('https://web.topbos.com/','_blank');});
+        closeLandingBtn.addEventListener('click',()=>{hideLanding();});
+      }
+      function handleKeyPress(key){if(isLocked)return;playSound('keypress');const v=key.getAttribute('data-key');if(v==='delete')deleteLastDigit();else if(v==='unlock')attemptUnlock();else addDigit(v);}
+      function addDigit(d){if(currentPin.length<PIN_LENGTH){currentPin+=d;updatePinDisplay();if(currentPin.length===PIN_LENGTH)setTimeout(attemptUnlock,300);}}
+      function deleteLastDigit(){currentPin=currentPin.slice(0,-1);updatePinDisplay();}
+      function updatePinDisplay(){pinDots.forEach((dot,i)=>{dot.classList.toggle('active',i<currentPin.length);});}
+      function attemptUnlock(){if(currentPin.length!==PIN_LENGTH){playSound('error');return;}attemptsRemaining--;attemptsCounter.textContent=attemptsRemaining;if(currentPin===CORRECT_PIN){playSound('success');showLanding();}else{playSound('error');if(attemptsRemaining<=0){isLocked=true;}}currentPin='';updatePinDisplay();}
+      function showLanding(){landingPage.style.display='block';landingPage.setAttribute('aria-hidden','false');}
+      function hideLanding(){landingPage.style.display='none';landingPage.setAttribute('aria-hidden','true');}
+      function playSound(type){if(!window.audioContext){window.audioContext=new (window.AudioContext||window.webkitAudioContext)();}const ctx=window.audioContext,osc=ctx.createOscillator(),gain=ctx.createGain();osc.connect(gain);gain.connect(ctx.destination);switch(type){case'keypress':osc.type='sine';osc.frequency.setValueAtTime(880,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(440,ctx.currentTime+0.1);gain.gain.setValueAtTime(0.2,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.1);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.1);break;case'error':osc.type='sawtooth';osc.frequency.setValueAtTime(300,ctx.currentTime);gain.gain.setValueAtTime(0.3,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.3);break;case'success':osc.type='sine';osc.frequency.setValueAtTime(440,ctx.currentTime);osc.frequency.setValueAtTime(659,ctx.currentTime+0.2);gain.gain.setValueAtTime(0.3,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.3);break;case'hover':osc.type='sine';osc.frequency.setValueAtTime(1760,ctx.currentTime);gain.gain.setValueAtTime(0.05,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.05);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.05);break;}}
+      init();
+    })();
+    </script>
 </body>
 </html>
